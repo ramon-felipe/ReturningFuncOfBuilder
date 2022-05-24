@@ -7,7 +7,7 @@ namespace BuilderReturnsFunc
         static void Main(string[] args)
         {
             var p = new Program();
-            var getUser = p.GetUser("Ramon");
+            var getUser = p.GetUser("Ramon", 15);
 
             var user = getUser.Invoke();
 
@@ -22,12 +22,12 @@ namespace BuilderReturnsFunc
             Console.WriteLine("O usuário {0} foi criado!", user.Name);
         }
 
-        private Func<User> GetUser(string name)
+        private Func<User> GetUser(string name, ushort age)
         {
             var userBuilder = new UserBuilder();
             return userBuilder
                 .SetName(name)
-                .SetAge(32)
+                .SetAge(age)
                 .Build;
         }
     }
